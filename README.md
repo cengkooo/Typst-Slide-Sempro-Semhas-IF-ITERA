@@ -187,6 +187,12 @@ Berkas [`01-Sempro/sempro_slides.typ`](file:///01-Sempro/sempro_slides.typ) meng
 
 Untuk mengisi materi presentasi Anda sendiri, cukup buka [`01-Sempro/sempro_slides.typ`](file:///01-Sempro/sempro_slides.typ) dan ganti teks di dalam tanda `[...]`:
 
+> 💡 PENTING: File Mana yang Harus Diedit?
+> * 01-Sempro/sempro_slides.typ (DAPUR KONTEN): 
+>  Ini adalah file yang wajib Anda edit untuk mengisi judul, nama, NIM, tabel, dan materi slide Anda.
+> * main.typ (PINTU MASUK / SHORTCUT): 
+> File ini tidak perlu Anda edit sama sekali. File ini hanya jalan pintas agar perintah typst compile main.typ atau typst watch main.typ bisa dijalankan langsung dari terminal tanpa error.
+
 ### 1. Mengubah Identitas Cover (Slide 1)
 ```typst
 #cover-slide(
