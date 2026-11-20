@@ -1,0 +1,49 @@
+# ==============================================================================
+# .gitignore — Slides Presentation Module (Tugas Akhir IF ITERA)
+# Menjaga repositori tetap bersih, bebas file sampah, dan mencegah image dump
+# ==============================================================================
+
+# 1. Drafts & Scratchpad Compilation
+# Abaikan PDF hasil uji coba/eksperimen agar git commit tetap fokus pada berkas produksi
+00-Drafts/*.pdf
+00-Drafts/temp_*
+00-Drafts/*.tmp
+
+# 2. Accidental Slide Image Exports (PNG/JPEG/SVG Dumps)
+# Mencegah tools/script yang tidak sengaja mengekspor ratusan PNG per slide ke repo
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+
+# KECUALIKAN aset branding resmi dan plot hasil eksperimen yang wajib di-track:
+!assets/
+!assets/branding/
+!assets/branding/**
+!assets/experiments/
+!assets/experiments/**
+
+# 3. Temporary & Editor Files
+*.tmp
+*.bak
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# 4. Office & Presentation Lock Files (Temporary Windows/PowerPoint locks)
+~$*.pptx
+~$*.ppt
+~$*.docx
+
+# 5. OS Generated Metadata
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+# 6. Typst / Shell Command Logs
+*.log
+sync_debug.txt
