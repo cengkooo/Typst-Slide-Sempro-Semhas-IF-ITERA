@@ -4,6 +4,11 @@ Repositori produksi slide presentasi Tugas Akhir Program Studi Teknik Informatik
 
 ---
 
+## Tampilan Slide
+
+<img width="2000" height="1125" alt="image" src="https://github.com/user-attachments/assets/61fa58e8-4045-4b09-a5b9-e4c226392ee5" />
+
+
 ## 📂 Struktur Direktori
 
 ```text
