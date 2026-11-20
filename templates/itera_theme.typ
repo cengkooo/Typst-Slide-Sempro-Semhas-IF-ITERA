@@ -16,6 +16,7 @@
 #let clr-accent       = rgb("7699f1")   // Accent Blue Fill (Card 3 / Bar 3)
 #let clr-white        = rgb("ffffff")   // White
 #let clr-table-alt    = rgb("f4f7fe")   // Alternating Table Row
+#let clr-bg-card      = rgb("f8fafc")   // Very Soft Slate Card Fill
 #let clr-border       = rgb("cbcbcb")   // Border Line Table
 #let clr-border-dark  = rgb("3b4f83")   // Dark Border Accent
 #let clr-success      = rgb("15803d")   // Hijau (Done Status)
@@ -24,6 +25,9 @@
 
 // State untuk melacak tahapan presentasi pada footer (Pengantar, Seminar Proposal, Sidang Akhir)
 #let current-stage = state("current-stage", "Pengantar")
+
+// Font Utama Template ITERA (Georgia sesuai dokumen master PPTX resmi IF ITERA)
+#let font-stack = "Georgia"
 
 // ------------------------------------------------------------------------------
 // 2. Template Setup Master (Widescreen 16:9, Georgia Typography, Header, Footer)
@@ -39,7 +43,7 @@
   current-stage.update(stage)
 
   set text(
-    font: "Georgia",
+    font: font-stack,
     size: 16pt,
     fill: clr-dark,
   )
@@ -71,8 +75,8 @@
         #grid(
           columns: (1fr, 1fr),
           align: (left + horizon, right + horizon),
-          text(size: 14pt, fill: clr-primary, font: "Georgia")[#course-code],
-          text(size: 14pt, fill: clr-primary, font: "Georgia")[#current-stage.get()],
+          text(size: 14pt, fill: clr-primary, font: font-stack)[#course-code],
+          text(size: 14pt, fill: clr-primary, font: font-stack)[#current-stage.get()],
         )
       ]
     },
@@ -83,19 +87,34 @@
 
 // ------------------------------------------------------------------------------
 // 3. Cover Slide Generator (Sesuai Slide 1 Bentuk 1 ITERA)
+// Mendukung format PPTX standar (author-nim) maupun terpisah (author & nim)
 // ------------------------------------------------------------------------------
 #let cover-slide(
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
   research-title: "[Judul penelitian, maks. 16 kata]",
-  author-nim: "[Nama mahasiswa, NIM]",
+  author-nim: none,
+  author: none,
+  nim: none,
   advisor: "[Nama dan gelar]",
   specialization: "[Bidang keilmuan Teknik Informatika]",
   stage: "[Seminar Proposal atau Sidang Akhir]",
   institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
   year: "[Tahun]",
+  created-date: none,
+  meeting-date: none,
   assets-dir: "/assets",
 ) = {
+  let display-author = if author-nim != none {
+    author-nim
+  } else if author != none and nim != none {
+    author + " (" + nim + ")"
+  } else if author != none {
+    author
+  } else {
+    "[Nama mahasiswa, NIM]"
+  }
+
   // Ornamen Segitiga Biru di Sudut Kanan Bawah (pos: x=8.06", y=2.22", w=5.28", h=5.28")
   place(
     top + left,
@@ -121,29 +140,30 @@
 
   // Blok Judul & Metadata (width: 7.87in)
   block(width: 7.87in)[
-    #text(size: 40pt, weight: "bold", fill: clr-primary, font: "Georgia")[#title]
+    #text(size: 40pt, weight: "bold", fill: clr-primary, font: font-stack)[#title]
     #v(0.09in)
-    #text(size: 20pt, weight: "regular", fill: clr-dark, font: "Georgia")[#subtitle]
+    #text(size: 20pt, weight: "regular", fill: clr-dark, font: font-stack)[#subtitle]
     
     #v(0.19in)
     
     // Metadata Mahasiswa & Penelitian
-    #set text(size: 18pt, fill: clr-dark, font: "Georgia")
+    #set text(size: 18pt, fill: clr-dark, font: font-stack)
     #grid(
       columns: (auto, 1fr),
       row-gutter: 0.08in,
       column-gutter: 0.12in,
       [Judul:], [#research-title],
-      [Nama dan NIM:], [#author-nim],
+      [Nama dan NIM:], [#display-author],
       [Pembimbing:], [#advisor],
       [Bidang Kajian:], [#specialization],
       [Tahap:], [#stage],
+      ..(if meeting-date != none { ([Pertemuan:], [#meeting-date]) } else { () }),
     )
   ]
 
   v(1fr)
 
-  text(size: 14pt, fill: clr-primary, font: "Georgia")[
+  text(size: 14pt, fill: clr-primary, font: font-stack)[
     #institution, #year
   ]
 }
@@ -161,12 +181,12 @@
     current-stage.update(stage)
   }
   block(width: 100%, spacing: 0pt)[
-    #text(size: 14pt, weight: "bold", fill: clr-dark, font: "Georgia")[#tag] \
+    #text(size: 14pt, weight: "bold", fill: clr-dark, font: font-stack)[#tag] \
     #v(0.01in)
-    #text(size: 36pt, weight: "bold", fill: clr-primary, font: "Georgia")[#title] \
+    #text(size: 36pt, weight: "bold", fill: clr-primary, font: font-stack)[#title] \
     #if subtitle != "" [
       #v(0.01in)
-      #text(size: 18pt, weight: "regular", fill: clr-primary, font: "Georgia")[#subtitle]
+      #text(size: 18pt, weight: "regular", fill: clr-primary, font: font-stack)[#subtitle]
     ]
   ]
   v(0.16in)
@@ -194,11 +214,11 @@
         columns: (0.75in, 1fr),
         gutter: 0.14in,
         align: (top + left, top + left),
-        text(size: 20pt, weight: "bold", fill: fg, font: "Georgia")[#num],
+        text(size: 20pt, weight: "bold", fill: fg, font: font-stack)[#num],
         [
-          #text(size: 20pt, weight: "bold", fill: fg, font: "Georgia")[#title] \
+          #text(size: 20pt, weight: "bold", fill: fg, font: font-stack)[#title] \
           #v(0.01in)
-          #text(size: 18pt, weight: "regular", fill: fg, font: "Georgia")[#body]
+          #text(size: 18pt, weight: "regular", fill: fg, font: font-stack)[#body]
         ]
       )
     ]
@@ -212,6 +232,7 @@
   title: "",
   body: [],
   fill: clr-soft1,
+  stroke: none,
   height: auto,
   fg: clr-dark,
   title-color: clr-dark,
@@ -220,17 +241,40 @@
 ) = {
   block(
     fill: fill,
+    stroke: stroke,
     radius: radius,
     height: height,
     width: 100%,
     inset: inset,
     [
       #if title != "" [
-        #text(size: 20pt, weight: "bold", fill: title-color, font: "Georgia")[#title]
+        #text(size: 20pt, weight: "bold", fill: title-color, font: font-stack)[#title]
         #v(0.06in)
       ]
-      #text(size: 18pt, weight: "regular", fill: fg, font: "Georgia")[#body]
+      #text(size: 18pt, weight: "regular", fill: fg, font: font-stack)[#body]
     ]
+  )
+}
+
+// ------------------------------------------------------------------------------
+// 6b. Status Badge Component (Untuk Matriks Progres & Bimbingan Mingguan)
+// ------------------------------------------------------------------------------
+#let status-badge(status) = {
+  let s = upper(str(status))
+  let (bg, fg, label) = if s in ("DONE", "SELESAI", "TERCAPAI") {
+    (rgb("dcfce7"), clr-success, "SELESAI")
+  } else if s in ("IN_PROGRESS", "PROGRES", "BERJALAN") {
+    (rgb("fef3c7"), clr-warning, "PROGRES")
+  } else {
+    (rgb("fee2e2"), clr-danger, "KENDALA")
+  }
+  box(
+    fill: bg,
+    radius: 4pt,
+    inset: (x: 6pt, y: 3pt),
+    outset: 0pt,
+    baseline: 1pt,
+    text(size: 10pt, weight: "bold", fill: fg, font: font-stack)[#label]
   )
 }
 
@@ -244,7 +288,7 @@
     radius: 4pt,
     width: 100%,
     [
-      #text(size: 20pt, weight: "regular", fill: clr-white, font: "Georgia")[#text-content]
+      #text(size: 20pt, weight: "regular", fill: clr-white, font: font-stack)[#text-content]
     ]
   )
 }
@@ -257,7 +301,7 @@
   headers: (),
   rows: (),
 ) = {
-  set text(size: 14pt, font: "Georgia")
+  set text(size: 14pt, font: font-stack)
   table(
     columns: columns,
     stroke: 0.5pt + clr-border,
@@ -318,11 +362,11 @@
 
   // Teks Judul & Kontak di Kiri Atas
   block(width: 7.15in)[
-    #text(size: 44pt, weight: "bold", fill: clr-white, font: "Georgia")[#title]
+    #text(size: 44pt, weight: "bold", fill: clr-white, font: font-stack)[#title]
     #v(0.14in)
-    #text(size: 20pt, weight: "regular", fill: clr-white, font: "Georgia")[#subtitle]
+    #text(size: 20pt, weight: "regular", fill: clr-white, font: font-stack)[#subtitle]
     #v(0.14in)
-    #text(size: 18pt, weight: "regular", fill: clr-soft1, font: "Georgia")[#contact]
+    #text(size: 18pt, weight: "regular", fill: clr-soft1, font: font-stack)[#contact]
   ]
 
   v(1fr)

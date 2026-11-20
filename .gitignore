@@ -4,10 +4,8 @@
 # ==============================================================================
 
 # 1. Drafts & Scratchpad Compilation
-# Abaikan PDF hasil uji coba/eksperimen agar git commit tetap fokus pada berkas produksi
-00-Drafts/*.pdf
-00-Drafts/temp_*
-00-Drafts/*.tmp
+# Abaikan seluruh folder draft eksperimen lokal
+00-Drafts/
 
 # 2. Accidental Slide Image Exports (PNG/JPEG/SVG Dumps)
 # Mencegah tools/script yang tidak sengaja mengekspor ratusan PNG per slide ke repo
@@ -30,7 +28,8 @@
 *~
 *.swp
 *.swo
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 
 # 4. Office & Presentation Lock Files (Temporary Windows/PowerPoint locks)
