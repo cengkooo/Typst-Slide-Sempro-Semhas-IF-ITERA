@@ -152,11 +152,11 @@
       columns: (auto, 1fr),
       row-gutter: 0.08in,
       column-gutter: 0.12in,
-      [Judul:], [#research-title],
+      ..(if research-title != none { ([Judul:], [#research-title]) } else { () }),
       [Nama dan NIM:], [#display-author],
       [Pembimbing:], [#advisor],
-      [Bidang Kajian:], [#specialization],
-      [Tahap:], [#stage],
+      ..(if specialization != none { ([Bidang Kajian:], [#specialization]) } else { () }),
+      ..(if stage != none { ([Tahap:], [#stage]) } else { () }),
       ..(if meeting-date != none { ([Pertemuan:], [#meeting-date]) } else { () }),
     )
   ]

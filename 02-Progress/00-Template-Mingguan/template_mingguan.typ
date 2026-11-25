@@ -16,17 +16,17 @@
 // SLIDE 1: COVER IDENTITAS & EXECUTIVE SNAPSHOT
 // ==============================================================================
 #cover-slide(
-  title: [Laporan Progres Mingguan: [Topik Utama Pekan Ini]],
-  subtitle: "Sesi Bimbingan Tugas Akhir — Pertemuan #[XX]",
-  author: "Andryano",
-  nim: "121140205",
-  advisor: "Nama Dosen Pembimbing, S.Kom., M.T.",
-  specialization: "Sistem Cerdas dan Sains Data Terapan",
-  stage: "Progres Bimbingan Mingguan",
+  title: [Laporan Progres Mingguan],
+  subtitle: "Laporan Progress Bimbingan Tugas Akhir — Pertemuan #[x] — [Tanggal]",
+  research-title: "[Judul Penelitian]",
+  author: "Andryano Kadarisman",
+  nim: "123140205",
+  advisor: "Hafiz Budi Firmansyah, S.Kom., M.Sc.",
+  specialization: none,
+  stage: none,
+  meeting-date: none,
   institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
   year: "2026",
-  created-date: "YYYY-MM-DD",
-  meeting-date: "YYYY-MM-DD",
 )
 
 #pagebreak()
@@ -86,12 +86,6 @@
   )
 )
 
-#memory-recall(
-  obsidian: "03-Bimbingan/Notulensi-Bimbingan.md",
-  code: "EXPERIMENT/Code/baseline_gaur/todolist.md",
-  artifact: "Target Pekan Lalu vs Realisasi",
-)
-
 #pagebreak()
 
 // ==============================================================================
@@ -134,12 +128,6 @@
       ]
     )
   ]
-)
-
-#memory-recall(
-  obsidian: "05-Eksperimen/1_TRAIN_BASELINE.md",
-  code: "EXPERIMENT/Code/baseline_gaur/src/[nama_file.py]",
-  artifact: "Slides/assets/experiments/[nama_plot.png]",
 )
 
 #pagebreak()
@@ -192,10 +180,4 @@
       ]
     )
   ]
-)
-
-#memory-recall(
-  obsidian: "03-Bimbingan/Bank-Pertanyaan-Dosen.md",
-  code: "EXPERIMENT/Code/baseline_gaur/todolist.md",
-  artifact: "Action Items Pekan Depan",
 )
