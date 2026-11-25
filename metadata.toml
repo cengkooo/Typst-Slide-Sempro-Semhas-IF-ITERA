@@ -1,6 +1,6 @@
 [student]
-name = "[Judul penelitian, maks. 16 kata]"
-nim = "[-]"
+name = "[Nama]"
+nim = "[NIM]"
 
 [research]
 title = "[Judul penelitian, maks. 16 kata]"
