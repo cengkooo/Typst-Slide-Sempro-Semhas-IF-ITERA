@@ -3,7 +3,7 @@
 // Institut Teknologi Sumatera (ITERA) — Program Studi Teknik Informatika
 // ==============================================================================
 
-#import "/templates/itera_theme.typ": *
+#import "../../templates/itera_theme.typ": *
 
 #show: itera-presentation.with(
   title: "Laporan Progres Mingguan Tugas Akhir",

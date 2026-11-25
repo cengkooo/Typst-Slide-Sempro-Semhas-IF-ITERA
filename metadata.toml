@@ -1,16 +1,16 @@
 [student]
-name = "[Nama]"
-nim = "[NIM]"
+name = "Andryano Shevchenko Limbong"
+nim = "123140205"
 
 [research]
 title = "[Judul penelitian, maks. 16 kata]"
-specialization = "[Bidang keilmuan Teknik Informatika]"
+specialization = "Artificial Inteligence and Data Engineering"
 stage = "[Seminar Proposal atau Sidang Akhir]"
 
 [supervision]
-advisor = "[Nama dan gelar]"
+advisor = "Hafiz Budi Firmansyah, S.Kom., M.Sc., Ph.D."
 
 [institution]
 name = "Program Studi Teknik Informatika, Institut Teknologi Sumatera"
 course_code = "Tugas Akhir (IF25-40033)"
-year = "[Tahun]"
+year = "2026"

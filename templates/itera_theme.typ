@@ -27,7 +27,7 @@
 #let current-stage = state("current-stage", "Pengantar")
 
 // Metadata terpusat untuk pengisian otomatis identitas mahasiswa & penelitian
-#let ta-meta = toml("/metadata.toml")
+#let ta-meta = toml("../metadata.toml")
 
 // Font Utama Template ITERA (Georgia sesuai dokumen master PPTX resmi IF ITERA)
 #let font-stack = "Georgia"
@@ -40,7 +40,7 @@
   subtitle: "",
   stage: "Pengantar",
   course-code: auto,
-  assets-dir: "/assets",
+  assets-dir: "../assets",
   body,
 ) = {
   let resolved-course-code = if course-code == auto { ta-meta.institution.course_code } else { course-code }
@@ -107,7 +107,7 @@
   year: auto,
   created-date: none,
   meeting-date: none,
-  assets-dir: "/assets",
+  assets-dir: "../assets",
 ) = {
   let resolved-research-title = if research-title == auto { ta-meta.research.title } else { research-title }
   let resolved-author = if author == auto { ta-meta.student.name } else { author }
@@ -339,7 +339,7 @@
   title: "Terima Kasih",
   subtitle: "[Pertanyaan dan masukan dipersilakan]",
   contact: "[Email mahasiswa] | [Email pembimbing]",
-  assets-dir: "/assets",
+  assets-dir: "../assets",
 ) = {
   // Latar Belakang Biru Gelap Penuh (#344369)
   place(

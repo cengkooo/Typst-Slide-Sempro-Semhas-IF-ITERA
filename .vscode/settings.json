@@ -1,5 +1,6 @@
 {
   "tinymist.exportPdf": "onSave",
-  "tinymist.preview.pin": "01-Sempro/sempro_slides.typ",
+  "tinymist.rootPath": "${workspaceFolder}",
+  "tinymist.outputPath": "$dir/$name",
   "tinymist.fontPaths": []
 }

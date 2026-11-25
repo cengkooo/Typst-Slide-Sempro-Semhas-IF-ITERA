@@ -3,7 +3,7 @@
 // Institut Teknologi Sumatera (ITERA) — Program Studi Teknik Informatika
 // ==============================================================================
 
-#import "/templates/itera_theme.typ": *
+#import "../../templates/itera_theme.typ": *
 
 #show: itera-presentation.with(
   title: "Laporan Progres Mingguan #01",
@@ -100,7 +100,7 @@
   columns: (1.2fr, 1fr),
   gutter: 0.25in,
   [
-    #image("/assets/experiments/baseline_deam_traversal_plot.png", height: 2.90in)
+    #image("../../assets/experiments/baseline_deam_traversal_plot.png", height: 2.90in)
   ],
   [
     #card-box(

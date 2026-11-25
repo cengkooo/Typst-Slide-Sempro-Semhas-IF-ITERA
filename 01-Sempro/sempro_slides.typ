@@ -6,13 +6,13 @@
 // (dokumen-template-if/Templat_Presentasi_TA_Bentuk1_Penelitian_Konvensional.pptx)
 // ==============================================================================
 
-#import "/templates/itera_theme.typ": *
+#import "../templates/itera_theme.typ": *
 
 #show: itera-presentation.with(
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
   stage: "Pengantar",
-  assets-dir: "/assets",
+  assets-dir: "../assets",
 )
 
 // ==============================================================================
@@ -22,7 +22,7 @@
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
   stage: "[Seminar Proposal atau Sidang Akhir]",
-  assets-dir: "/assets",
+  assets-dir: "../assets",
 )
 
 #pagebreak()
@@ -147,7 +147,7 @@
   ),
   box(
     width: 0.83in,
-    image("/assets/branding/panah_kanan.png", width: 0.83in)
+    image("../assets/branding/panah_kanan.png", width: 0.83in)
   ),
   card-box(
     title: "Kondisi yang Diharapkan",
@@ -546,5 +546,5 @@
   title: "Terima Kasih",
   subtitle: "[Pertanyaan dan masukan dipersilakan]",
   contact: "[Email mahasiswa] | [Email pembimbing]",
-  assets-dir: "/assets",
+  assets-dir: "../assets",
 )
