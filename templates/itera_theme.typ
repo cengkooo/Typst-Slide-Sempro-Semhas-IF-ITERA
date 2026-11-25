@@ -26,6 +26,9 @@
 // State untuk melacak tahapan presentasi pada footer (Pengantar, Seminar Proposal, Sidang Akhir)
 #let current-stage = state("current-stage", "Pengantar")
 
+// Metadata terpusat untuk pengisian otomatis identitas mahasiswa & penelitian
+#let ta-meta = toml("/metadata.toml")
+
 // Font Utama Template ITERA (Georgia sesuai dokumen master PPTX resmi IF ITERA)
 #let font-stack = "Georgia"
 
@@ -36,10 +39,11 @@
   title: "",
   subtitle: "",
   stage: "Pengantar",
-  course-code: "Tugas Akhir (IF25-40033)",
+  course-code: auto,
   assets-dir: "/assets",
   body,
 ) = {
+  let resolved-course-code = if course-code == auto { ta-meta.institution.course_code } else { course-code }
   current-stage.update(stage)
 
   set text(
@@ -75,7 +79,7 @@
         #grid(
           columns: (1fr, 1fr),
           align: (left + horizon, right + horizon),
-          text(size: 14pt, fill: clr-primary, font: font-stack)[#course-code],
+          text(size: 14pt, fill: clr-primary, font: font-stack)[#resolved-course-code],
           text(size: 14pt, fill: clr-primary, font: font-stack)[#current-stage.get()],
         )
       ]
@@ -92,25 +96,34 @@
 #let cover-slide(
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
-  research-title: "[Judul penelitian, maks. 16 kata]",
+  research-title: auto,
   author-nim: none,
-  author: none,
-  nim: none,
-  advisor: "[Nama dan gelar]",
-  specialization: "[Bidang keilmuan Teknik Informatika]",
-  stage: "[Seminar Proposal atau Sidang Akhir]",
-  institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
-  year: "[Tahun]",
+  author: auto,
+  nim: auto,
+  advisor: auto,
+  specialization: auto,
+  stage: auto,
+  institution: auto,
+  year: auto,
   created-date: none,
   meeting-date: none,
   assets-dir: "/assets",
 ) = {
+  let resolved-research-title = if research-title == auto { ta-meta.research.title } else { research-title }
+  let resolved-author = if author == auto { ta-meta.student.name } else { author }
+  let resolved-nim = if nim == auto { ta-meta.student.nim } else { nim }
+  let resolved-advisor = if advisor == auto { ta-meta.supervision.advisor } else { advisor }
+  let resolved-specialization = if specialization == auto { ta-meta.research.specialization } else { specialization }
+  let resolved-stage = if stage == auto { ta-meta.research.stage } else { stage }
+  let resolved-institution = if institution == auto { ta-meta.institution.name } else { institution }
+  let resolved-year = if year == auto { ta-meta.institution.year } else { year }
+
   let display-author = if author-nim != none {
     author-nim
-  } else if author != none and nim != none {
-    author + " (" + nim + ")"
-  } else if author != none {
-    author
+  } else if resolved-author != none and resolved-nim != none {
+    resolved-author + " (" + resolved-nim + ")"
+  } else if resolved-author != none {
+    resolved-author
   } else {
     "[Nama mahasiswa, NIM]"
   }
@@ -136,27 +149,27 @@
     image(assets-dir + "/branding/logo_diktisaintek.png", height: 0.83in),
   )
 
-  v(0.22in)
+  v(0.14in)
 
   // Blok Judul & Metadata (width: 7.87in)
   block(width: 7.87in)[
-    #text(size: 40pt, weight: "bold", fill: clr-primary, font: font-stack)[#title]
-    #v(0.09in)
-    #text(size: 20pt, weight: "regular", fill: clr-dark, font: font-stack)[#subtitle]
+    #text(size: 36pt, weight: "bold", fill: clr-primary, font: font-stack)[#title]
+    #v(0.06in)
+    #text(size: 19pt, weight: "regular", fill: clr-dark, font: font-stack)[#subtitle]
     
-    #v(0.19in)
+    #v(0.12in)
     
     // Metadata Mahasiswa & Penelitian
-    #set text(size: 18pt, fill: clr-dark, font: font-stack)
+    #set text(size: 16pt, fill: clr-dark, font: font-stack)
     #grid(
       columns: (auto, 1fr),
-      row-gutter: 0.08in,
+      row-gutter: 0.06in,
       column-gutter: 0.12in,
-      ..(if research-title != none { ([Judul:], [#research-title]) } else { () }),
+      ..(if resolved-research-title != none { ([Judul:], [#resolved-research-title]) } else { () }),
       [Nama dan NIM:], [#display-author],
-      [Pembimbing:], [#advisor],
-      ..(if specialization != none { ([Bidang Kajian:], [#specialization]) } else { () }),
-      ..(if stage != none { ([Tahap:], [#stage]) } else { () }),
+      [Pembimbing:], [#resolved-advisor],
+      ..(if resolved-specialization != none { ([Bidang Kajian:], [#resolved-specialization]) } else { () }),
+      ..(if resolved-stage != none { ([Tahap:], [#resolved-stage]) } else { () }),
       ..(if meeting-date != none { ([Pertemuan:], [#meeting-date]) } else { () }),
     )
   ]
@@ -164,7 +177,7 @@
   v(1fr)
 
   text(size: 14pt, fill: clr-primary, font: font-stack)[
-    #institution, #year
+    #resolved-institution, #resolved-year
   ]
 }
 

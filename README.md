@@ -193,7 +193,40 @@ Untuk mengisi materi presentasi Anda sendiri, cukup buka [`01-Sempro/sempro_slid
 > * main.typ (PINTU MASUK / SHORTCUT): 
 > File ini tidak perlu Anda edit sama sekali. File ini hanya jalan pintas agar perintah typst compile main.typ atau typst watch main.typ bisa dijalankan langsung dari terminal tanpa error.
 
-### 1. Mengubah Identitas Cover (Slide 1)
+### 0. Otomatisasi Identitas via `metadata.toml` (Single Source of Truth)
+Seluruh data identitas yang berulang (`Nama`, `NIM`, `Judul Penelitian`, `Pembimbing`, `Bidang Kajian`, `Institusi`, `Kode MK`, dan `Tahun`) dikelola terpusat pada [`metadata.toml`](file:///metadata.toml) dan dibaca otomatis oleh `templates/itera_theme.typ` menggunakan fungsi bawaan `toml("/metadata.toml")`.
+
+```toml
+[student]
+name = "Nama Mahasiswa"
+nim = "123140XXX"
+
+[research]
+title = "Judul Penelitian Tugas Akhir"
+specialization = "Sistem Cerdas dan Sains Data Terapan"
+stage = "[Seminar Proposal atau Sidang Akhir]"
+
+[supervision]
+advisor = "Nama Dosen Pembimbing, S.Kom., M.Sc."
+
+[institution]
+name = "Program Studi Teknik Informatika, Institut Teknologi Sumatera"
+course_code = "Tugas Akhir (IF25-40033)"
+year = "2026"
+```
+
+Dengan konfigurasi ini, templat mingguan di `02-Progress/00-Template-Mingguan/template_mingguan.typ` cukup mengisi variabel pertemuan saja (parameter lain otomatis terisi, atau dapat di-*override* / disembunyikan dengan `none`):
+```typst
+#cover-slide(
+  title: [Laporan Progres Mingguan],
+  subtitle: "Laporan Progress Bimbingan Tugas Akhir — Pertemuan #[x] — [Tanggal]",
+  specialization: none,
+  stage: none,
+  meeting-date: none,
+)
+```
+
+### 1. Mengubah Identitas Cover (Slide 1 — Override Manual)
 ```typst
 #cover-slide(
   title: "Seminar Proposal Tugas Akhir",

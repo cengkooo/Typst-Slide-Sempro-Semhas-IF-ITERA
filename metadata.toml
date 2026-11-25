@@ -1,0 +1,16 @@
+[student]
+name = "[Judul penelitian, maks. 16 kata]"
+nim = "[-]"
+
+[research]
+title = "[Judul penelitian, maks. 16 kata]"
+specialization = "[Bidang keilmuan Teknik Informatika]"
+stage = "[Seminar Proposal atau Sidang Akhir]"
+
+[supervision]
+advisor = "[Nama dan gelar]"
+
+[institution]
+name = "Program Studi Teknik Informatika, Institut Teknologi Sumatera"
+course_code = "Tugas Akhir (IF25-40033)"
+year = "[Tahun]"

@@ -12,7 +12,6 @@
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
   stage: "Pengantar",
-  course-code: "Tugas Akhir (IF25-40033)",
   assets-dir: "/assets",
 )
 
@@ -22,13 +21,7 @@
 #cover-slide(
   title: "Templat Presentasi Tugas Akhir",
   subtitle: "Bentuk 1: Penelitian Konvensional",
-  research-title: "[Judul penelitian, maks. 16 kata]",
-  author-nim: "[Nama mahasiswa, NIM]",
-  advisor: "[Nama dan gelar]",
-  specialization: "[Bidang keilmuan Teknik Informatika]",
   stage: "[Seminar Proposal atau Sidang Akhir]",
-  institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
-  year: "[Tahun]",
   assets-dir: "/assets",
 )
 

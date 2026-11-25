@@ -18,15 +18,9 @@
 #cover-slide(
   title: [Laporan Progres Mingguan],
   subtitle: "Laporan Progress Bimbingan Tugas Akhir — Pertemuan #[x] — [Tanggal]",
-  research-title: "[Judul Penelitian]",
-  author: "Andryano Kadarisman",
-  nim: "123140205",
-  advisor: "Hafiz Budi Firmansyah, S.Kom., M.Sc.",
   specialization: none,
   stage: none,
   meeting-date: none,
-  institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
-  year: "2026",
 )
 
 #pagebreak()

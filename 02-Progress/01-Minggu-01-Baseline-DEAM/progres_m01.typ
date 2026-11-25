@@ -9,24 +9,17 @@
   title: "Laporan Progres Mingguan #01",
   subtitle: "Replikasi Baseline Gaur & Karakterisasi DEAM",
   stage: "Bimbingan Mingguan #01",
-  course-code: "Tugas Akhir (IF25-40033)",
 )
 
 // ==============================================================================
 // SLIDE 1: COVER IDENTITAS & EXECUTIVE SNAPSHOT
 // ==============================================================================
 #cover-slide(
-  title: [Validasi Replikasi Baseline Gaur (2020) & Eksplorasi Dataset DEAM],
-  subtitle: "Laporan Progres Bimbingan Tugas Akhir — Pertemuan #01",
-  author: "Andryano",
-  nim: "121140205",
-  advisor: "Nama Dosen Pembimbing, S.Kom., M.T.",
-  specialization: "Sistem Cerdas dan Sains Data Terapan",
-  stage: "Bimbingan Mingguan #01",
-  institution: "Program Studi Teknik Informatika, Institut Teknologi Sumatera",
-  year: "2026",
-  created-date: "20 November 2026",
-  meeting-date: "21 November 2026",
+  title: [Validasi Replikasi Baseline Gaur (2020)],
+  subtitle: "Laporan Progress Bimbingan Tugas Akhir — Pertemuan #01 — 21 November 2026",
+  specialization: none,
+  stage: none,
+  meeting-date: none,
 )
 
 #pagebreak()
