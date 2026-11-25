@@ -400,34 +400,3 @@
     ]
   )
 }
-
-// ------------------------------------------------------------------------------
-// 10. Traceability & Memory Recall Tag (Footer Catatan / Walkthrough Ammo)
-// ------------------------------------------------------------------------------
-#let memory-recall(
-  obsidian: "",
-  code: "",
-  artifact: "",
-) = {
-  v(0.08in)
-  block(
-    fill: rgb("f1f5f9"),
-    stroke: 0.5pt + clr-border,
-    inset: (x: 0.12in, y: 0.05in),
-    radius: 4pt,
-    width: 100%,
-    [
-      #set text(size: 10pt, font: "Consolas", fill: clr-dark)
-      #grid(
-        columns: (auto, 1fr),
-        gutter: 0.08in,
-        [#text(weight: "bold", fill: clr-primary)[🔗 RECALL:]],
-        [
-          #if obsidian != "" [Obsidian: *#obsidian* #h(0.15in)]
-          #if code != "" [Code: *#code* #h(0.15in)]
-          #if artifact != "" [Data: *#artifact*]
-        ]
-      )
-    ]
-  )
-}

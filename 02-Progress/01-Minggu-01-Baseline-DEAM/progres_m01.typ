@@ -79,12 +79,6 @@
   )
 )
 
-#memory-recall(
-  obsidian: "03-Bimbingan/Notulensi-Bimbingan.md",
-  code: "EXPERIMENT/Code/baseline_gaur/todolist.md",
-  artifact: "Target Pekan Lalu vs Realisasi",
-)
-
 #pagebreak()
 
 // ==============================================================================
@@ -117,12 +111,6 @@
       ]
     )
   ]
-)
-
-#memory-recall(
-  obsidian: "05-Eksperimen/1_TRAIN_BASELINE.md",
-  code: "EXPERIMENT/Code/baseline_gaur/experiments/run_quadrant_experiments.py",
-  artifact: "Slides/assets/experiments/baseline_deam_traversal_plot.png",
 )
 
 #pagebreak()
@@ -175,10 +163,4 @@
       ]
     )
   ]
-)
-
-#memory-recall(
-  obsidian: "03-Bimbingan/Bank-Pertanyaan-Dosen.md#Q12",
-  code: "EXPERIMENT/Code/baseline_gaur/src/stage1_knn.py:50-95",
-  artifact: "Action Items Pekan #02",
 )
